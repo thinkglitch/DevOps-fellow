@@ -139,7 +139,14 @@ echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward # Enable
 
 ---
 
-## 3. Git Basics
+## 3. # Git Branching, Pull Requests, and Undoing Mistakes
+
+## Objective
+To practice and demonstrate the use of Git branching, committing, pushing, merging via Pull Requests (PRs), and undoing mistakes in Git. This ensures proper collaboration while maintaining stability on the main branch.
+
+---
+
+## Git Basics
 
 Git is a distributed version control system. Below are key commands with practical usage.
 
@@ -169,12 +176,7 @@ git diff                  # Compare changes
 ```
 
 ---
-# Git Branching, Pull Requests, and Undoing Mistakes
 
-## Objective
-To practice and demonstrate the use of Git branching, committing, pushing, merging via Pull Requests (PRs), and undoing mistakes in Git. This ensures proper collaboration while maintaining stability on the main branch.
-
----
 
 ## Step 1: Initialize Repository
 - Created a local Git repository.
