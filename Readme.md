@@ -169,4 +169,107 @@ git diff                  # Compare changes
 ```
 
 ---
+# Git Branching, Pull Requests, and Undoing Mistakes
 
+## Objective
+To practice and demonstrate the use of Git branching, committing, pushing, merging via Pull Requests (PRs), and undoing mistakes in Git. This ensures proper collaboration while maintaining stability on the main branch.
+
+---
+
+## Step 1: Initialize Repository
+- Created a local Git repository.
+- Added initial files and pushed them to the remote main branch.
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin git@github.com:murafay/example.git
+git push -u origin main
+```
+
+---
+
+## Step 2: Create a Development Branch
+- Created a new branch `dev` from main.
+- Switched to `dev` for feature development.
+
+```bash
+git branch dev
+git checkout dev
+```
+
+---
+
+## Step 3: Add New Files and Commit
+- Edited and added new files (e.g., `compose.yaml`).
+- Committed the changes to dev.
+
+```bash
+git add compose.yaml
+git commit -m "Added compose.yaml for testing"
+git push -u origin dev
+```
+
+---
+
+## Step 4: Open Pull Request (PR)
+- Pushed `dev` to GitHub.
+- Created a Pull Request on GitHub from `dev → main`.
+- This allowed review and merging changes into the stable branch.
+
+---
+
+## Step 5: Merge Pull Request
+- Merged the PR into `main`.
+
+After merge:
+- Both `main` and `dev` contained the same files at that commit.
+- The changes made in `dev` became part of `main`.
+
+---
+
+## Step 6: Divergence and Syncing
+- Added another file to `dev`.
+- Now `dev` had new changes not in `main`.
+- Opened another PR and merged it, bringing both branches back in sync.
+
+---
+
+## Step 7: Undo Solutions
+Sometimes mistakes happen (wrong commit, wrong push, or accidental file addition). Git provides multiple ways to undo:
+
+- **Undo Last Commit (keep changes in working directory):**
+```bash
+git reset --soft HEAD~1
+```
+Useful if you want to re-commit with a better message.
+
+- **Undo Last Commit (discard changes):**
+```bash
+git reset --hard HEAD~1
+```
+Completely removes the last commit and its changes.
+
+- **Undo a Commit That’s Already Pushed (create a new commit that reverts it):**
+```bash
+git revert <commit-hash>
+git push origin dev
+```
+Safest way on shared branches since it doesn’t rewrite history.
+
+- **Undo a File Before Commit:**
+```bash
+git checkout -- filename
+```
+Restores the file to the last committed version.
+
+- **Undo Pushed Changes (force push – not recommended unless you’re alone):**
+```bash
+git reset --hard HEAD~1
+git push origin dev --force
+```
+Danger: this rewrites history and can break other collaborators’ work.
+
+---
