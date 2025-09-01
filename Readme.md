@@ -178,7 +178,7 @@ git diff                  # Compare changes
 ---
 
 
-## Step 1: Initialize Repository
+# Step 1: Initialize Repository
 - Created a local Git repository.
 - Added initial files and pushed them to the remote main branch.
 
@@ -193,7 +193,7 @@ git push -u origin main
 
 ---
 
-## Step 2: Create a Development Branch
+# Step 2: Create a Development Branch
 - Created a new branch `dev` from main.
 - Switched to `dev` for feature development.
 
@@ -204,7 +204,7 @@ git checkout dev
 
 ---
 
-## Step 3: Add New Files and Commit
+# Step 3: Add New Files and Commit
 - Edited and added new files (e.g., `compose.yaml`).
 - Committed the changes to dev.
 
@@ -216,14 +216,14 @@ git push -u origin dev
 
 ---
 
-## Step 4: Open Pull Request (PR)
+# Step 4: Open Pull Request (PR)
 - Pushed `dev` to GitHub.
 - Created a Pull Request on GitHub from `dev → main`.
 - This allowed review and merging changes into the stable branch.
 
 ---
 
-## Step 5: Merge Pull Request
+# Step 5: Merge Pull Request
 - Merged the PR into `main`.
 
 After merge:
@@ -232,14 +232,14 @@ After merge:
 
 ---
 
-## Step 6: Divergence and Syncing
+# Step 6: Divergence and Syncing
 - Added another file to `dev`.
 - Now `dev` had new changes not in `main`.
 - Opened another PR and merged it, bringing both branches back in sync.
 
 ---
 
-## Step 7: Undo Solutions
+# Step 7: Undo Solutions
 Sometimes mistakes happen (wrong commit, wrong push, or accidental file addition). Git provides multiple ways to undo:
 
 - **Undo Last Commit (keep changes in working directory):**
