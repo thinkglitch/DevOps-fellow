@@ -275,7 +275,7 @@ git push origin dev --force
 Warning: This rewrites history and may disrupt the work of other collaborators.
 
 ---
-## 4 Bash Script
+## 4.Bash Script
 ## This document covers key concepts like variables, conditionals, loops, arithmetic, case statements, functions, arguments, and more.   
 
 ##  Script Overview  
