@@ -272,16 +272,13 @@ Restores the file to the last committed version.
 git reset --hard HEAD~1
 git push origin dev --force
 ```
-Danger: this rewrites history and can break other collaborators’ work.
+Warning: This rewrites history and may disrupt the work of other collaborators.
 
 ---
 
-#  Bash Scripting 
-This document covers key concepts, including variables, conditionals, loops, arithmetic, case statements, functions, arguments, and more.  
+## This document covers key concepts like variables, conditionals, loops, arithmetic, case statements, functions, arguments, and more.   
 
----
-
-## 📌 Script Overview  
+##  Script Overview  
 
 The script demonstrates:
 - Printing output  
@@ -297,45 +294,52 @@ The script demonstrates:
 - Shift usage  
 - Getopts (flags parsing)  
 
----
-
-## Script Content  
-
 ```bash
 #!/bin/bash
 echo " Hello, I am Rafay."  # to display string
-🔹 Variables
-bash
+```
 
+### Variables  
+
+```bash
 mission_name="lunar-mission"
 echo "Mission name is $mission_name"
 
 fellowship="Week-2"
-echo "Its the fellowship $fellowship"
-🔹 Command Line Arguments
-bash
+echo "It's the fellowship $fellowship"
+```
 
+---
+
+### Command Line Arguments  
+
+```bash
 # Example run: ./learning.sh apple banana cherry
 echo "Script name : $0"
 echo "fruits-name: $1 , $2 , $3"
 echo "all-args-of-fruits : $@"
 echo "Total-args : $#"
-$0 → Script name
+```
 
-$1, $2, $3 → Positional arguments
+- `$0` → Script name  
+- `$1, $2, $3` → Positional arguments  
+- `$@` → All arguments  
+- `$#` → Count of arguments  
 
-$@ → All arguments
+---
 
-$# → Count of arguments
+### Input Handling  
 
-🔹 Input Handling
-bash
-Copy code
+```bash
 read -p "Enter your mission name : " newmission
 echo "Preparing mission : $newmission"
-🔹 Arithmetic Operations
-bash
+```
 
+---
+
+### Arithmetic Operations  
+
+```bash
 read -p "Enter first number: " A
 read -p "Enter second number: " B
 
@@ -343,9 +347,13 @@ echo "Sum: $((A+B))"
 echo "Difference: $((A-B))"
 echo "Product: $((A*B))"
 echo "Division: $(echo "$A/$B" | bc -l)"
-🔹 If-Else Conditional
-bash
+```
 
+---
+
+### If-Else Conditional  
+
+```bash
 read -p "Enter the rocket status (Success/Failed): " status
 
 if [ "$status" = "Success" ]; then
@@ -355,24 +363,36 @@ elif [ "$status" = "Failed" ]; then
 else
    echo "Status was unknown"
 fi
-## For Loop
-bash
+```
 
+---
+
+### For Loop  
+
+```bash
 mission_status=$status
 for mission in $mission_status; do
   echo "Launching $mission ......."
 done
-## While Loop
-bash
-Copy code
+```
+
+---
+
+### While Loop  
+
+```bash
 count=1
 while [ $count -le 3 ]; do
    echo "Rocket launch attempt $count"
    ((count++))
 done
-## Case Statement
-bash
+```
 
+---
+
+### Case Statement  
+
+```bash
 read -p "Enter option (start/stop/status): " action
 case $action in
    start) echo " Starting rocket engines..." ;;
@@ -380,17 +400,25 @@ case $action in
    status) echo " Rocket status check initiated..." ;;
    *) echo " Invalid option" ;;
 esac
-## Exit Codes
-bash
+```
 
+---
+
+### Exit Codes  
+
+```bash
 ls /etc/passwd
 echo "Exit status of last command: $?"
 
 ls /no/such/file
 echo "Exit status of last command: $?"
-##Functions
-bash
+```
 
+---
+
+### Functions  
+
+```bash
 launch() {
    mission=$1
    echo "Preparing to launch $mission..."
@@ -400,9 +428,13 @@ launch() {
 
 launch "mars"
 launch "saturn"
- ## Shift Usage
-bash
+```
 
+---
+
+### Shift Usage  
+
+```bash
 echo "Processing args with shift..."
 args=("$@")
 set -- "${args[@]}"   # reset args
@@ -410,3 +442,24 @@ while [ $# -gt 0 ]; do
    echo "Arg: $1"
    shift
 done
+```
+
+---
+
+### Getopts Usage (Flags)  
+
+```bash
+while getopts "u:p:" opt; do
+   case $opt in
+      u) user=$OPTARG ;;
+      p) pass=$OPTARG ;;
+      *) echo "Usage: $0 -u username -p password" ; exit 1 ;;
+   esac
+done
+
+if [ ! -z "$user" ] && [ ! -z "$pass" ]; then
+   echo "User: $user"
+   echo "Password: $pass"
+fi
+```
+
