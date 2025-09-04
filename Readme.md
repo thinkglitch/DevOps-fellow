@@ -2,8 +2,8 @@
 
 This guide introduces Linux fundamentals, networking basics, and Git with practical examples so beginners can follow along step by step.
 
+# Week 1
 ---
-
 ## 1. Linux Fundamentals
 
 ### Navigating the Linux CLI
@@ -139,6 +139,7 @@ echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward # Enable
 
 ---
 
+
 ## 3.Git Branching, Pull Requests, and Undoing Mistakes
 
 ## Objective
@@ -176,8 +177,8 @@ git diff                  # Compare changes
 ```
 
 ---
-
-
+# Week 2
+## Git
 ## Step 1: Initialize Repository
 - Created a local Git repository.
 - Added initial files and pushed them to the remote main branch.
