@@ -1,4 +1,4 @@
-# Beginner's Practical Guide – Linux, Networking, and Git
+# Beginner's Practical Guide – Linux, Networking, Git, and Bash Scripting 
 
 This guide introduces Linux fundamentals, networking basics, and Git with practical examples so beginners can follow along step by step.
 
@@ -275,3 +275,138 @@ git push origin dev --force
 Danger: this rewrites history and can break other collaborators’ work.
 
 ---
+
+#  Bash Scripting 
+This document covers key concepts, including variables, conditionals, loops, arithmetic, case statements, functions, arguments, and more.  
+
+---
+
+## 📌 Script Overview  
+
+The script demonstrates:
+- Printing output  
+- Variables  
+- Command-line arguments  
+- Input handling  
+- Arithmetic operations  
+- If-Else conditions  
+- For & While loops  
+- Case statements  
+- Exit codes  
+- Functions  
+- Shift usage  
+- Getopts (flags parsing)  
+
+---
+
+## Script Content  
+
+```bash
+#!/bin/bash
+echo " Hello, I am Rafay."  # to display string
+🔹 Variables
+bash
+
+mission_name="lunar-mission"
+echo "Mission name is $mission_name"
+
+fellowship="Week-2"
+echo "Its the fellowship $fellowship"
+🔹 Command Line Arguments
+bash
+
+# Example run: ./learning.sh apple banana cherry
+echo "Script name : $0"
+echo "fruits-name: $1 , $2 , $3"
+echo "all-args-of-fruits : $@"
+echo "Total-args : $#"
+$0 → Script name
+
+$1, $2, $3 → Positional arguments
+
+$@ → All arguments
+
+$# → Count of arguments
+
+🔹 Input Handling
+bash
+Copy code
+read -p "Enter your mission name : " newmission
+echo "Preparing mission : $newmission"
+🔹 Arithmetic Operations
+bash
+
+read -p "Enter first number: " A
+read -p "Enter second number: " B
+
+echo "Sum: $((A+B))"
+echo "Difference: $((A-B))"
+echo "Product: $((A*B))"
+echo "Division: $(echo "$A/$B" | bc -l)"
+🔹 If-Else Conditional
+bash
+
+read -p "Enter the rocket status (Success/Failed): " status
+
+if [ "$status" = "Success" ]; then
+   echo "Rocket launched successfully!"
+elif [ "$status" = "Failed" ]; then
+   echo "Rocket launch failed!"
+else
+   echo "Status was unknown"
+fi
+## For Loop
+bash
+
+mission_status=$status
+for mission in $mission_status; do
+  echo "Launching $mission ......."
+done
+## While Loop
+bash
+Copy code
+count=1
+while [ $count -le 3 ]; do
+   echo "Rocket launch attempt $count"
+   ((count++))
+done
+## Case Statement
+bash
+
+read -p "Enter option (start/stop/status): " action
+case $action in
+   start) echo " Starting rocket engines..." ;;
+   stop) echo " Stopping rocket engines..." ;;
+   status) echo " Rocket status check initiated..." ;;
+   *) echo " Invalid option" ;;
+esac
+## Exit Codes
+bash
+
+ls /etc/passwd
+echo "Exit status of last command: $?"
+
+ls /no/such/file
+echo "Exit status of last command: $?"
+##Functions
+bash
+
+launch() {
+   mission=$1
+   echo "Preparing to launch $mission..."
+   echo "Ignition..."
+   echo "$mission launched!"
+}
+
+launch "mars"
+launch "saturn"
+ ## Shift Usage
+bash
+
+echo "Processing args with shift..."
+args=("$@")
+set -- "${args[@]}"   # reset args
+while [ $# -gt 0 ]; do
+   echo "Arg: $1"
+   shift
+done
